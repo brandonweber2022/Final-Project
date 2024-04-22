@@ -25,6 +25,7 @@ def extract_course_credits(course_data):
     Returns:
     - credits_list (list): List of credit values for each course.
     """
+  
 
 def extract_course_season(course_data):
     """
@@ -36,6 +37,11 @@ def extract_course_season(course_data):
     Returns:
     - season_list (list): List of seasons for each course.
     """
+
+fall_semester = re.search(r"Fall (.+)", "hypothetical course list")
+#repeat for summer and spring
+season_list = []
+#append semester to season list
 
 def identify_gen_ed_courses(course_data):
     """
