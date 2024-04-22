@@ -7,9 +7,9 @@ def main():
 Main function to run the webscraping, data filtering, and user interactions
 """
 url= "Example url.edu"
-html_content = fetch_webpage(url)
-all_classes = parse_for_classes(html_content)
-free_classes = filter_free_classes(all_classes)
+scrapper = WebScraper()
+html_content = scraper.fetch_webpage(url)
+all_classes = scraper.parse_for_classes(html_content)
 
 subject = user_subject_choice()
 filtered_classes = filter_classes_by_subject(subject)
@@ -18,7 +18,7 @@ if filtered_classes:
   for cl in filtered_classes:
     Print(f"Class Name: {cl['name]}, Description: {cl['description']}")
 else:
-  print("No classes found for the selected subject")
+  print("No classes found for the selected subject!")
 
 if __name__ == '__main__'
   main()
