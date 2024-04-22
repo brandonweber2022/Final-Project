@@ -41,6 +41,7 @@ def extract_course_season(course_data):
 fall_semester = re.search(r"Fall (.+)", "hypothetical course list")
 #repeat for summer and spring
 season_list = []
+retun season_list
 #append semester to season list
 
 def identify_gen_ed_courses(course_data):
@@ -53,3 +54,5 @@ def identify_gen_ed_courses(course_data):
     Returns:
     - gen_ed_list (list): List indicating whether each course is GenEd or not.
     """
+  #same thing as semester but for gen eds instead
+
