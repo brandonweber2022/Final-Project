@@ -26,11 +26,17 @@ def get_html (self, url):
     except requests.exceptions.RequestException as e:
         return f"Error occured: {e}"
 
-def parse_html():
+def parse_html(self, html_content):
 
-    """ Takes html content as input and uses bueatifulsoup to parse it"""
-    pass
-
+    """ Takes html content as input and uses bueatifulsoup to extract class data"""
+    soup = BeautifulSoup(html_content,'html.parser')
+    classes_compiled = []
+    for course_tag in soup.find_all("div", class_="course"):
+        name = course_tag.find("span",class_="name").text
+        description = course_tag.find("p", class_="description").text
+        classes.append({"name": name, "description": description})
+    return classes_compiled
+                                
 def extract_data():
 
     """a standalone function that extracts the data using regular expressiosns to indentify free courses"""
