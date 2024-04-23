@@ -1,4 +1,5 @@
-
+import requests 
+from bs4 import BeautifulSoup
 class Webscraper:
     """ A Class that uses uninversal regualr expression to seperate free course from unpaid courses
     
@@ -12,10 +13,18 @@ class Webscraper:
     """
     pass
 
-def get_html ():
+def get_html (self, url):
 
-    "A function that sends a request to recieve a specified URL and returns the HTML webpages"
-    pass
+    "A function that sends a request to recieve a specified URL and returns the HTML webpages
+    parameters: 
+        url: url of the desired website
+    "
+    try: 
+        response = requests.get(url)
+        response.raise_for_status() #error handling condtion
+        return response.text
+    except requests.exceptions.RequestException as e:
+        return f"Error occured: {e}"
 
 def parse_html():
 
