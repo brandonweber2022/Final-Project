@@ -1,4 +1,4 @@
-from webscraping import fetch_webpage, parse_for_classses
+from webscraping import get_html, parse_html
 from data_analysis import filter_clases_by_subject
 from utilities import user_subject_choice
 
