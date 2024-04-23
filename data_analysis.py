@@ -13,7 +13,7 @@ Parameters:
   filtered_classes = [cl for cl in class_list if subject.lower() in cl['description'}.lower()]
   return filtered_classes
   
-# Sup Sean, this is what I was thinking for the data_analysis file. lmk what you think
+
 
 def extract_course_credits(course_data):
     """
@@ -39,11 +39,11 @@ def extract_course_season(course_data):
     - season_list (list): List of seasons for each course.
     """
    
-fall_semester = re.search(r"Fall (.+)", "hypothetical course list")
-#repeat for summer and spring
+fall_semester_classes = re.search(r"Fall (.+)", class_list)
+spring_semester_classes = re.search(r"Spring (.+)", class_list)
+summer_semester_classes = re.search(r"Summer (.+)", class_list)
 season_list = []
-retun season_list
-#append semester to season list
+
 
 def identify_gen_ed_courses(course_data):
     """
