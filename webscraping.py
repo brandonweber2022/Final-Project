@@ -39,7 +39,8 @@ def parse_html(self, html_content):
                                 
 def extract_data():
 
-    """a standalone function that extracts the data using regular expressiosns to indentify free courses"""
+    """a standalone function that extracts the data using regular expressiosns to indentify courses based on subject
+    """
     pass
 
 def permission():
