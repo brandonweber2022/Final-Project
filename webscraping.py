@@ -41,7 +41,14 @@ def extract_data():
 
     """a standalone function that extracts the data using regular expressiosns to indentify courses based on subject
     """
-    pass
+
+
+    subject_pattern = re.compile(r'\b(Social Science|Health & Medicine|Computer Science |Humanities|Business|Art)\b', re.IGNORECASE)
+
+    subjects_found = subject_pattern.findall(text)
+
+    print("Subjects found:", subjects_found)
+    
 
 def permission():
 
