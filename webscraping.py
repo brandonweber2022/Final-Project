@@ -50,16 +50,8 @@ def extract_data():
     print("Subjects found:", subjects_found)
     
 
-def permission():
-
-    """A function that checks to see if we can get permission from the website to extract data"""
-
-
-        permission = url + "/robots.txt"
-
-    pass
 
 def error_handling():
 
-    """ A funcion that handles errors"""
+    """ A function that checks if there the data is there for a dictionary of a class. If the data is not there, n/a is filled in instead, """
     pass
