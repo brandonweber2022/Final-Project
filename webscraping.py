@@ -53,6 +53,10 @@ def extract_data():
 def permission():
 
     """A function that checks to see if we can get permission from the website to extract data"""
+
+
+        permission = url + "/robots.txt"
+
     pass
 
 def error_handling():
