@@ -51,7 +51,11 @@ def extract_data():
     
 
 
-def error_handling():
+def error_handling(self,data):
 
     """ A function that checks if there the data is there for a dictionary of a class. If the data is not there, n/a is filled in instead, """
+    if not data:
+        return 'n/a'
+    return data
+    
     pass
