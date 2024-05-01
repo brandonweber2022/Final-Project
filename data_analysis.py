@@ -27,6 +27,7 @@ def extract_course_credits(course_data):
     """
     list_credits = [ course["credits"] for course in course_data]
     return list_credits
+  #create opportunity extract non int course creidt like a certificiation
 
 def extract_course_season(course_data):
     """
@@ -44,6 +45,7 @@ spring_semester_classes = re.search(r"Spring (.+)", class_list)
 summer_semester_classes = re.search(r"Summer (.+)", class_list)
 season_list = []
 
+#possibly add function to extract course delivery method, online, asyc, in person
 
 def identify_gen_ed_courses(course_data):
     """
