@@ -1,61 +1,122 @@
-import requests 
 from bs4 import BeautifulSoup
+import requests
+
 class Webscraper:
-    """ A Class that uses uninversal regualr expression to seperate free course from unpaid courses
+
+    def __init__(self):
+
+        self.url = None
+
+        self.soup = None
+
+    def get_url(self):
+
+        self.url = input("Input a URL to webscrape here: ")
+
+    def beautifulsouping_url(self):
+
+        response = requests.get(self.url)
+
+        self.soup = BeautifulSoup(response.text, "html.parser")
+
+    def course_season(self):
+
+        course_season_tag = self.soup.find('div', id="page-desc")
+
+        return course_season_tag.text.strip() if course_season_tag else "N/A"
     
-    Will include methods such as: 
+    def extract_courses(self):
+
+        course_tags = self.soup.find_all('div', class_="course")
+
+        courses = []
+
+        for tags in course_tags:
+
+            course_id_tag = tags.find('div', class_="course-id")
+
+            course_id = course_id_tag.text.strip() if course_id_tag else "N/A"
+
+            course_subject_tag = tags.find('span', class_="course-title")
+
+            course_subject = course_subject_tag.text.strip() if course_subject_tag else "N/A"
+
+            credits_label_tag = tags.find('span', class_="course-info-label")
+
+            credits_value_tag = tags.find('span', class_="course-min-credits")
+
+            credits_label = credits_label_tag.text.strip() if credits_label_tag else "N/A"
+
+            credits_value = credits_value_tag.text.strip() if credits_value_tag else "N/A"
+
+            course = {
+                "course_id": course_id,
+
+                "subject": course_subject,
+
+                "credits": credits_value
+            }
+            courses.append(course)
+
+        return courses
     
-    fetch_html: fetches the html content from a URL
-    parse_html: parses the html using BeautifulSoup
-    extract_data: extracts the specified data from the pasrse function
-    save_data: saves the data we extracted to a file
-    
-    """
-    pass
+        
+    def print_course(self, courses):
 
-def get_html (self, url):
+        for course in courses:
 
-    "A function that sends a request to recieve a specified URL and returns the HTML webpages
-    parameters: 
-        url: url of the desired website
-    "
-    try: 
-        response = requests.get(url)
-        response.raise_for_status() #error handling condtion
-        return response.text
-    except requests.exceptions.RequestException as e:
-        return f"Error occured: {e}"
+            print("Course ID:", course["course_id"])
 
-def parse_html(self, html_content):
+            print("Subject:", course["subject"])
 
-    """ Takes html content as input and uses bueatifulsoup to extract class data"""
-    soup = BeautifulSoup(html_content,'html.parser')
-    classes_compiled = []
-    for course_tag in soup.find_all("div", class_="course"):
-        name = course_tag.find("span",class_="name").text
-        description = course_tag.find("p", class_="description").text
-        classes.append({"name": name, "description": description})
-    return classes_compiled
-                                
-def extract_data():
+            print("Credits:", course["credits"])
 
-    """a standalone function that extracts the data using regular expressiosns to indentify courses based on subject
-    """
+            print()
 
+    def calculate_cost(self):
 
-    subject_pattern = re.compile(r'\b(Social Science|Health & Medicine|Computer Science |Humanities|Business|Art)\b', re.IGNORECASE)
+        course_id = input("What course are you interested in? Enter a course ID: ")
 
-    subjects_found = subject_pattern.findall(text)
+        for course in self.extract_courses():
 
-    print("Subjects found:", subjects_found)
-    
+            if course["course_id"] == course_id:
 
+                credits = int(course["credits"])
 
-def error_handling(self,data):
+                tuition_rate = float(input("What's the tuition rate for this semester? "))
 
-    """ A function that checks if there the data is there for a dictionary of a class. If the data is not there, n/a is filled in instead, """
-    if not data:
-        return 'n/a'
-    return data
-    
-    pass
+                cost = credits * tuition_rate
+
+                print(f"Expected cost for course {course_id}: ${cost}")
+
+                if cost == 0:
+                    
+                    print("This course is FREE!")
+
+                return course_id, cost
+            
+        print("Course not found.")
+
+        return None, None
+
+    def scrape(self):
+
+        self.get_url()
+
+        self.beautifulsouping_url()
+
+        course_season = self.course_season()
+
+        print(course_season)
+
+        courses = self.extract_courses()
+
+        self.print_course(courses)
+
+        self.calculate_cost()
+
+if __name__ == "__main__":
+
+    scraper = Webscraper()
+
+    scraper.scrape()
