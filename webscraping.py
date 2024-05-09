@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
+#URL TO USE: https://app.testudo.umd.edu/soc/202408/FIRE
 class Webscraper:
     """A class for web scraping course information."""
 
