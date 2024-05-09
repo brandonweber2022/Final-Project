@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
+# Website to use: https://app.testudo.umd.edu/soc/202408/FMSC
 class Webscraper:
     
     """ A class establishing the url and the soup method we'll be using"""
