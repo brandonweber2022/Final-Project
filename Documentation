@@ -1,0 +1,12 @@
+Our project is designed to automate the extraction of course information from a university's online course catalog. The main objective is to
+provide users with a simple way to input a URL, scrape relevant course data from the webpage, and display this information in a structured format and
+calcuating the cost of the course.
+This is all to save the end user time and effort. This can be particularly useful for students, academic advisors, and educational 
+researchers. This design ensures that each part of the process is handled by a distinct function, 
+promoting modularity and making the code easier to maintain and extend. For instance,
+if the structure of the course catalog webpage changes, only the functions responsible extracting the 
+websites information needs to be changed (extract_courses), leaving the rest of the codebase unaffected.
+
+
+To run the code from the command line, type in:
+python webscraping.py AND/OR python regex_webscraper.py. Links to the website will be provided. 
