@@ -2,30 +2,52 @@ from bs4 import BeautifulSoup
 import requests
 
 class Webscraper:
-
+    
+    """ A class establishing the url and the soup method we'll be using"""
+    
     def __init__(self):
-
+        
+    """ Initlizaies the names url and soup"""
+    
         self.url = None
 
         self.soup = None
 
     def get_url(self):
+    """ Requests the url for the URL to be webscraped"""
 
         self.url = input("Input a URL to webscrape here: ")
 
     def beautifulsouping_url(self):
+    """ A function that uses beautiful soup to extract the URLs data"""
 
         response = requests.get(self.url)
 
         self.soup = BeautifulSoup(response.text, "html.parser")
 
     def course_season(self):
+    """ A function that finds the season of the courses displayed 
+
+    Args:
+        self, a parameter that indivudally intalizaites an object
+
+    Returns:
+        Returns the courses season if it's found
+    """
 
         course_season_tag = self.soup.find('div', id="page-desc")
 
         return course_season_tag.text.strip() if course_season_tag else "N/A"
     
     def extract_courses(self):
+    """ A function that extracts the information of the courses, such as Course ID, Credits, and Subject
+
+    Args:
+        self, a parameter that indivudally intalizaites an object
+
+    Returns:
+        A dictionary of courses
+    """
 
         course_tags = self.soup.find_all('div', class_="course")
 
@@ -62,6 +84,16 @@ class Webscraper:
     
         
     def print_course(self, courses):
+    """ A function that prints out the information of the courses for the user to see
+
+    Args:
+        self: a parameter that indivudally intalizaites an object
+        
+        courses: the courses extarcted from the extract_courses method
+
+    Side Effects:
+        print(): Prints out courses
+    """
 
         for course in courses:
 
@@ -74,6 +106,21 @@ class Webscraper:
             print()
 
     def calculate_cost(self):
+    """ A function that calculates the cost of a course chosen by the user
+    Args:
+        self: a parameter that indivudally intalizaites an object
+
+    Side Effects:
+        print(): Prints out a prompt asking the expected cost of tution. If cost is 0, a print of "This Course is FREE!" is printed, if not, the cost is printed
+
+    Returns:
+        Returns a tuple of the course_id and cost
+        
+        Returns nothing if nothing was found
+    
+    """
+
+    
 
         course_id = input("What course are you interested in? Enter a course ID: ")
 
@@ -100,6 +147,12 @@ class Webscraper:
         return None, None
 
     def scrape(self):
+    """A function that calls the meothods to be executed
+    
+    Args:
+        self: a parameter that indivudally intalizaites an object
+    
+    """
 
         self.get_url()
 
