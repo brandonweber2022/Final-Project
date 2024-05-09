@@ -4,7 +4,7 @@ import requests
 
 import re
 
-#https://catalog.upenn.edu/courses/anat/
+# Website to use: https://catalog.upenn.edu/courses/anat/
 
 class other_website:
     
