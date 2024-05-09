@@ -7,25 +7,41 @@ class Webscraper:
     
     def __init__(self):
         
-    """ Initlizaies the names url and soup"""
+    """ Initlizaies the names url and soup
+    
+    Args:
+        self, a parameter that indivudally intalizaites an object 
+        
+    """
     
         self.url = None
 
         self.soup = None
 
     def get_url(self):
-    """ Requests the url for the URL to be webscraped"""
+        
+    """ Requests the url for the URL to be webscraped
+    
+    Args:
+        self, a parameter that indivudally intalizaites an object   
+    """
 
         self.url = input("Input a URL to webscrape here: ")
 
     def beautifulsouping_url(self):
-    """ A function that uses beautiful soup to extract the URLs data"""
+        
+    """ A function that uses beautiful soup to extract the URLs data
+    
+    Args:
+        self, a parameter that indivudally intalizaites an object
+    """
 
         response = requests.get(self.url)
 
         self.soup = BeautifulSoup(response.text, "html.parser")
 
     def course_season(self):
+        
     """ A function that finds the season of the courses displayed 
 
     Args:
@@ -40,6 +56,7 @@ class Webscraper:
         return course_season_tag.text.strip() if course_season_tag else "N/A"
     
     def extract_courses(self):
+        
     """ A function that extracts the information of the courses, such as Course ID, Credits, and Subject
 
     Args:
@@ -84,6 +101,7 @@ class Webscraper:
     
         
     def print_course(self, courses):
+        
     """ A function that prints out the information of the courses for the user to see
 
     Args:
@@ -106,6 +124,7 @@ class Webscraper:
             print()
 
     def calculate_cost(self):
+        
     """ A function that calculates the cost of a course chosen by the user
     Args:
         self: a parameter that indivudally intalizaites an object
@@ -119,9 +138,7 @@ class Webscraper:
         Returns nothing if nothing was found
     
     """
-
-    
-
+        
         course_id = input("What course are you interested in? Enter a course ID: ")
 
         for course in self.extract_courses():
@@ -147,6 +164,7 @@ class Webscraper:
         return None, None
 
     def scrape(self):
+        
     """A function that calls the meothods to be executed
     
     Args:
