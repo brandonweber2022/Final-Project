@@ -10,3 +10,11 @@ websites information needs to be changed (extract_courses), leaving the rest of 
 
 To run the code from the command line, type in:
 python webscraping.py AND/OR python regex_webscraper.py. Links to the website will be provided. 
+
+
+To be able to read the outputs of the program. A seris of courses will display. 
+
+Ex: 
+Course ID: INST100
+Course Subject: Introduction to Information Science
+Credits: 3
