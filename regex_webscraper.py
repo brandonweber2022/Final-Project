@@ -23,6 +23,7 @@ class other_website:
         self.soup = None
 
     def get_url(self):
+        
 """ Requests the url for the URL to be webscraped
 
     Args:
@@ -32,6 +33,7 @@ class other_website:
         self.url = input("Input a URL to webscrape here: ")
 
     def beautifulsouping_url(self):
+        
 """ A function that uses beautiful soup to extract the URLs data
 
     Args:
@@ -96,6 +98,7 @@ class other_website:
 
 
     def print_course(self, courses):
+        
 """ A function that prints out the information of the courses for the user to see
 
     Args:
@@ -118,6 +121,7 @@ class other_website:
             print()
 
     def calculate_cost(self):
+        
 """ A function that calculates the cost of a course chosen by the user
     Args:
         self: a parameter that indivudally intalizaites an object
@@ -157,11 +161,11 @@ class other_website:
         return None, None
 
     def scrape(self):
+        
 """ A function that calls the meothods to be executed
     
     Args:
         self: a parameter that indivudally intalizaites an object
-    
 """
 
         self.get_url()
